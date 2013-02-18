@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>监听函数</title>
+<script type="text/javascript">
+function fnClick(oEvent){
+	if(oEvent.type == "click")
+		console.log("我被点击了");
+	else if(oEvent.type == "mouseover")
+		console.log("我被鼠标盖住了");
+	//alert("我被点击了");
+	//oP.removeEventListener("click",fnClick,false);
+}
+var oP;
+window.onload = function(){
+	oP = document.getElementById("myP");
+	oP.addEventListener("click",fnClick,false);
+	oP.addEventListener("mouseover",fnClick,false);
+}
+</script>
+</head>
+
+<body>
+<div>
+	<p id="myP">Click me!</p>
+</div>
+</body>
+</html>

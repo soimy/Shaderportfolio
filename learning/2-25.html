@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>if 语句</title>
+</head>
+
+<body>
+<script language="javascript">
+	var iNumber = Number(prompt("请输入一个5至100之间的数字",""));
+	if(isNaN(iNumber))
+		document.write("请输入数字内容");
+	else if (iNumber < 5 || iNumber > 100)
+		document.write("请输入5至100之间的数字");
+	else 
+		document.write("您输入的数字是:" + iNumber);
+</script>
+</body>
+</html>

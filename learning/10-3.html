@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Helloworld</title>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var oElements = $("h2 a");
+	for(var i=0;i<oElements.length;i++){
+		oElements[i].innerHTML = i.toString();
+	}
+}
+</script>
+</head>
+
+<body>
+<h2><a href="#">正文</a>内容</h2>
+<h2>正文<a href="#">内容</a></h2>
+</body>
+</html>

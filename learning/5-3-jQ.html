@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Child Node</title>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script language="javascript">
+$(function(){
+	var oLi = $("ul li");
+	console.log(oLi.length);
+	for(var i=0; i<oLi.length; i++)
+		console.log(oLi[i].text());
+});
+</script>
+</head>
+
+<body>
+	<ul id="myList">
+    	<li>糖醋排骨</li>
+        <li>粉蒸肉</li>
+        <li>泡菜鱼</li>
+        <li>板栗烧鸡</li>
+        <li>麻婆豆腐</li>
+    </ul>
+</body>
+</html>
