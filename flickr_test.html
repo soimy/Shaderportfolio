@@ -23,6 +23,7 @@ function initBlock(){
 	if(conWidth != currentWidth) {
 		currentWidth = conWidth;
 		$('#imageList').width(conWidth);
+		$('#header_wrapper').width(conWidth);
 		$('#imageList').BlocksIt({
 			numOfCol: col,
 			offsetX: 6,
@@ -74,11 +75,13 @@ $(function(){
 
 <!-- Header -->
 <header id="header">
+<div id="header_wrapper">
 	<h1>Shader</h1>
 	<div id="backlinks">
 		<a href="../">Back to Home Page &raquo;</a>
 		<a href="http://www.inwebson.com/jquery/blocksit-js-dynamic-grid-layout-jquery-plugin/">Visit Plugin Article Page &raquo;</a>
 	</div>
+</div>
 	<div class="clearfix"></div>
 </header>
 
