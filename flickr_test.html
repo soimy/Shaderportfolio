@@ -1,74 +1,101 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link href='http://fonts.googleapis.com/css?family=PT+Mono|Rokkitt:700|Oxygen:300' rel='stylesheet' type='text/css'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
 <title>Untitled Document</title>
-<style type="text/css">
-<!--
-
-#imageList{
-	position:relative;
-	width:1100px;
-	margin:0 auto 25px;
-	padding-bottom: 10px;
-}
-
-.grid{
-	width:188px;
-	min-height:100px;
-	padding: 15px;
-	background:#fff;
-	margin:8px;
-	font-size:12px;
-	float:left;
-	box-shadow: 0 1px 3px rgba(34,25,25,0.4);
-	-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
-	-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
-	
-	-webkit-transition: top 1s ease, left 1s ease;
-	-moz-transition: top 1s ease, left 1s ease;
-	-o-transition: top 1s ease, left 1s ease;
-	-ms-transition: top 1s ease, left 1s ease;
-}
-
-.grid strong {
-	border-bottom:1px solid #ccc;
-	margin:10px 0;
-	display:block;
-	padding:0 0 5px;
-	font-size:17px;
-}
-.grid .meta{
-	text-align:right;
-	color:#777;
-	font-style:italic;
-}
-.grid .imgholder img{
-	max-width:100%;
-	background:#ccc;
-	display:block;
-}
-
--->
-</style>
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/js/blocksit.js"></script>
+<link rel='stylesheet' href='./css/style.css' media='screen' />
+<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="./js/blocksit.js"></script>
 <script type="text/javascript">
+function initBlock(){
+	var winWidth = $(window).width();
+	var colWidth = 250;
+	var conWidth;
+	col = Math.floor(winWidth/colWidth);
+	conWidth = col * colWidth;
+
+	
+	if(conWidth != currentWidth) {
+		currentWidth = conWidth;
+		$('#imageList').width(conWidth);
+		$('#imageList').BlocksIt({
+			numOfCol: col,
+			offsetX: 6,
+			offsetY: 6
+		});
+	}
+}
+
+var currentWidth;
 $(function(){
+	$("#imageList").hide();
 	$.getJSON("http://api.flickr.com/services/feeds/photoset.gne?set=72157622672087347&nsid=34563450@N06&lang=en-us&format=json&jsoncallback=?", function(data){
-	  $.each(data.items, function(i,item){
-	    $("<img/>").attr("src", item.media.m).appendTo("#imageList")
-	    	.wrap("<div class='grid' style='width:150px, border-width:1px'></div>")
-	    	.wrap("<a href='" + item.link + "'></a>");
-	  });
+		$.each(data.items, function(i,item){
+		    // $("<img/>").attr("src", item.media.m).appendTo("#imageList")
+		    // 	.wrap("<div class='grid'></div>")
+		    // 	.wrap("<div class='imgholder'></div>")
+		    // 	.wrap("<a href='" + item.link + "'></a>");
+		    var $img =  $("<img/>").attr("src", item.media.m).appendTo("#imageList")
+							    	.wrap("<div class='grid'></div>")
+							    	.wrap("<div class='imgholder'></div>")
+							    	.wrap("<a href='" + item.link + "'></a>");
+			// console.log($grid);
+			var $info = $("<div></div>").addClass("info").appendTo($img.parent().parent().parent());
+			$("<strong></strong>").text(item.title).appendTo($info);
+			$info.append(item.description);
+			$info.find("p:lt(2)").remove();
+			$("<div class='meta'></div>").text(item.tags).appendTo($info);
+		});
 	});
-	$("#imageList").BlocksIt({numOfCol: 4});
+	$("<div id='loader'></div>").appendTo("#wrapper");
+	currentWidth = 1100;
+	//blocksit define
+	$(window).load( function() {
+		//$("#imageList div.grid:eq(5)").attr("data-size",2);
+		$("#loader").hide();
+		$("#imageList").fadeIn(500);
+		initBlock();
+	});
+
+	$(window).resize(function() {
+		initBlock();
+	});
+	
 });
 </script>
 </head>
 
 <body>
-<h2>照片列表</h2>
-<div id="imageList"></div>
+
+<!-- Header -->
+<header id="header">
+	<h1>Shader</h1>
+	<div id="backlinks">
+		<a href="../">Back to Home Page &raquo;</a>
+		<a href="http://www.inwebson.com/jquery/blocksit-js-dynamic-grid-layout-jquery-plugin/">Visit Plugin Article Page &raquo;</a>
+	</div>
+	<div class="clearfix"></div>
+</header>
+
+<!-- Content -->
+<section id="wrapper">
+	<hgroup>
+		<h2>BlocksIt.js Demonstration 2</h2> 
+		<h3>Pinterest Dynamic Grid Layout with CSS3 Transitions (RESIZE)</h3>
+	</hgroup>
+	
+	<div id="imageList"></div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+	<span>&copy; 2013 <a href="http://www.shadergroup.com">ShaderGroup.com</a>. Designed by <a href="http://www.shadergroup.com"><strong>GU</strong></a>. Code by <a href="http://www.shadergroup.com">SYM</a>.</span>
+</footer>
+
 </body>
 </html>

@@ -1,7 +1,232 @@
-.centerTitle {
-	position: fixed;
-	width: 500px;
-	top: 50%;
-	right: 50%;
+body{
+	margin:0;
+	padding:0;
+	background:url(../images/bg.gif) 0 0 repeat #f7f5f5;
+	color:#333;
+	font-family:Oxygen, sans-serif;
+	font-size:15px;
+	overflow-x:hidden;
+}
+
+header, section, footer, hgroup{
+	display:block;
+}
+
+a {
+	color:#35BFFF;
+	text-decoration:none;
+}
+
+a:hover, a:active{
+	color:#91DCFF;
+}
+
+.code{
+	font-family: 'PT Mono', monospace;
+}
+
+#loader {
+  width: 160px;
+  height: 24px;
+  background-image:url(../images/loadbar2.gif);
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -80px;
+  margin-top: -20px;
+}
+
+/* Header */
+#header{
+	width:100%;
+	background:#fff;
+	/*background:rgba(1, 1, 1, 0.8);*/
+	padding:0px 0;
+	margin-bottom:8px;
+	box-shadow: 0 3px 0px rgba(34,25,25,0.1);
+	-moz-box-shadow: 0 3px 3px rgba(34,25,25,0.1);
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:99;
+}
+#header h1{
+	padding-left:20px;
+	margin-top:8px;
+	margin-bottom: 0px;
+	/*text-shadow:2px 1px 1px #333, 2px 2px 1px #888;*/
+	color:#666;
+	float:left;
+	font-size:48px;
+	font-family: 'Rokkitt', serif;
+	letter-spacing:-2px;
+	position: relative;
+	top:5px;
+}
+
+.bubble {
+	position:absolute;
+	float:left;
+	padding: 2px 5px;
+	width: 121px;
+	color:#fff;
+	background:#ffcc00; /* default background for browsers without gradient support */
+	margin-left: 20px;
+  	margin-top: 0px;
+  	font-size: 9px;
+  	font-family: monospace;
+  	text-align: center;
+  	box-shadow: 2px 2px 0px rgba(34,25,25,0.1);
+}
+
+.bubble:after{
+	content:"";
+	position:absolute;
+	bottom:-5px; /* value = - border-top-width - border-bottom-width */
+	left:2px; /* controls horizontal position */
+	border-width:5px 5px 0px 0px; /* vary these values to change the angle of the vertex */
+	border-style:solid;
+	border-color:#ffcc00 transparent; 
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width:0;
+    /*box-shadow: 2px 2px 0px rgba(34,25,25,0.1);*/
+}
+
+#backlinks{
+	float:right;
+	padding:0 20px;
+	line-height:22px;
+	font-weight:bold;
+	font-size:13px;
+}
+#backlinks a{
+	text-align:right;
+	display:block;
+}
+
+/* Footer */
+#footer{
+	width:100%;
+	/*position:relative;*/
+	/*padding-left:20px;*/
+	bottom:0;
+	left:0;
+	line-height:20px;
+	color:#888;
+	font-size:14px;
+	/*background:rgb(0, 0, 0);
+	background:rgba(0, 0, 0, 0.8);*/
+	z-index:99;
 	text-align: center;
+}
+#footer span{
+	display:block;
+}
+
+/* clearfix */
+.clearfix {
+	clear:both;
+}
+
+/* wrapper css */
+#wrapper{
+	margin-top:70px;
+	width:100%;
+}
+#wrapper hgroup{
+	text-align:center;
+}
+#wrapper h2{
+	margin:5px 0;
+	color:#FF6D99;
+	text-shadow:1px 1px 2px #A50031;
+	font-size:33px;
+	font-family: 'Rokkitt', serif;
+}
+#wrapper h3{
+	font-style:italic;
+	font-weight:normal;
+	font-size:18px;
+	text-shadow:1px 1px 0 #fff;
+	color:#888;
+	margin:5px 0;
+}
+
+
+#imageList{
+	position:relative;
+	width:100%;
+	margin:0 auto 25px;
+	padding-bottom: 10px;
+}
+
+.grid{
+	width:250px;
+	min-height:100px;
+	padding: 8px;
+	background:#fff;
+	margin:4px;
+	font-size:12px;
+	float:left;
+	box-shadow: 0 2px 0px 1px rgba(34,25,25,0.1);
+	-moz-box-shadow: 0 2px 0px 1px rgba(34,25,25,0.1);
+	-webkit-box-shadow:0 2px 0px 1px rgba(34,25,25,0.1);
+	
+	-webkit-transition: top 0.5s ease, left 0.5s ease;
+	-moz-transition: top 0.5s ease, left 0.5s ease;
+	-o-transition: top 0.5s ease, left 0.5s ease;
+	-ms-transition: top 0.5s ease, left 0.5s ease;
+}
+
+.grid .info{}
+
+.grid strong {
+	/*border-bottom:1px solid #ccc;*/
+	margin:5px 0;
+	display:block;
+	padding:0 0 5px;
+	font-size:16px;
+	font-family: 'Rokkitt', serif;
+}
+
+.grid p {
+	/*border-bottom:1px solid #ccc;*/
+	margin:3px 0;
+	display:block;
+	padding:0 0 0px;
+	font-size:13px;
+}
+
+.grid .meta{
+	text-align:right;
+	color:#777;
+	font-family: 'PT Mono', monospace;
+}
+
+.grid .imgholder img{
+	width:100%;
+	background:#ccc;
+	display:block;
+}
+
+
+
+@media screen and (max-width : 1240px) {
+	body{
+		overflow:auto;
+	}
+}
+@media screen and (max-width : 900px) {
+	#backlinks{
+		float:none;
+		clear:both;
+	}
+	#backlinks a{
+		display:inline-block;
+		padding-right:20px;
+	}
+	#wrapper{
+		margin-top:90px;
+	}
 }
