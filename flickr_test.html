@@ -2,15 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link href='http://fonts.googleapis.com/css?family=PT+Mono|Rokkitt:700|Oxygen:300' rel='stylesheet' type='text/css'>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
-<title>Untitled Document</title>
-<link rel='stylesheet' href='./css/style.css' media='screen' />
-<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
+<title>Shader | Technical Design</title>
+<link rel='stylesheet' href='./css/style.css' media='screen' />
+<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+
 <script type="text/javascript" src="./js/blocksit.js"></script>
+<script type="text/javascript" src="./js/imgcentering.js"></script>
 <script type="text/javascript">
 function initBlock(){
 	var winWidth = $(window).width();
@@ -33,14 +35,11 @@ function initBlock(){
 }
 
 var currentWidth;
-$(function(){
+$(document).ready(function(){
 	$("#imageList").hide();
+	$("<div id='loader'></div>").appendTo("#wrapper");
 	$.getJSON("http://api.flickr.com/services/feeds/photoset.gne?set=72157622672087347&nsid=34563450@N06&lang=en-us&format=json&jsoncallback=?", function(data){
 		$.each(data.items, function(i,item){
-		    // $("<img/>").attr("src", item.media.m).appendTo("#imageList")
-		    // 	.wrap("<div class='grid'></div>")
-		    // 	.wrap("<div class='imgholder'></div>")
-		    // 	.wrap("<a href='" + item.link + "'></a>");
 		    var $img =  $("<img/>").attr("src", item.media.m).appendTo("#imageList")
 							    	.wrap("<div class='grid'></div>")
 							    	.wrap("<div class='imgholder'></div>")
@@ -53,20 +52,21 @@ $(function(){
 			$("<div class='meta'></div>").text(item.tags).appendTo($info);
 		});
 	});
-	$("<div id='loader'></div>").appendTo("#wrapper");
-	currentWidth = 1100;
-	//blocksit define
-	$(window).load( function() {
-		//$("#imageList div.grid:eq(5)").attr("data-size",2);
-		$("#loader").hide();
-		$("#imageList").fadeIn(500);
-		initBlock();
-	});
+	currentWidth = $(document).width();
 
-	$(window).resize(function() {
-		initBlock();
-	});
 	
+});
+
+//blocksit define
+$(window).load( function() {
+	//$("#imageList div.grid:eq(5)").attr("data-size",2);
+	$("#loader").hide();
+	$("#imageList").fadeIn(500);
+	initBlock();
+});
+
+$(window).resize(function() {
+	initBlock();
 });
 </script>
 </head>
@@ -75,21 +75,22 @@ $(function(){
 
 <!-- Header -->
 <header id="header">
-<div id="header_wrapper">
+
 	<h1>Shader</h1>
-	<div id="backlinks">
-		<a href="../">Back to Home Page &raquo;</a>
-		<a href="http://www.inwebson.com/jquery/blocksit-js-dynamic-grid-layout-jquery-plugin/">Visit Plugin Article Page &raquo;</a>
+	<div id="nav">
+		<span><a href="#">Works</a></span>
+		<span><a href="#">About us</a></span>
+		<span><a href="#">Blog</a></span>
 	</div>
-</div>
+
 	<div class="clearfix"></div>
 </header>
 
 <!-- Content -->
 <section id="wrapper">
 	<hgroup>
-		<h2>BlocksIt.js Demonstration 2</h2> 
-		<h3>Pinterest Dynamic Grid Layout with CSS3 Transitions (RESIZE)</h3>
+		<h2>We Make Technical Design</h2> 
+		<img class="imgCenter" src="./images/stuffgather.png" />
 	</hgroup>
 	
 	<div id="imageList"></div>

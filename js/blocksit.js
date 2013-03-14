@@ -139,17 +139,17 @@
 		
 		//define block data
 		var pos = getBlockPostion(obj.data('size'));
-		var blockWidth = colwidth * obj.data('size') - (obj.outerWidth() - obj.width());
+		var blockWidth = colwidth * obj.data('size');// - (obj.outerWidth(true) - obj.width());
 
 		//update style first before get object height
 		obj.css({
 			'width': blockWidth - blocksOptions.offsetX*2,
-			'left': pos[0] * colwidth,
+			'left': pos[0] * colwidth + blocksOptions.offsetX,
 			'top': pos[1],
 			'position': 'absolute'
 		});
 		
-		var blockHeight = obj.outerHeight();
+		var blockHeight = obj.outerHeight(true);
 		
 		//modify blockarr for new block
 		blockarrRemove(pos[0], obj.data('size'));

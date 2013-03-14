@@ -12,6 +12,10 @@ header, section, footer, hgroup{
 	display:block;
 }
 
+img{
+	border-style: none;
+}
+
 a {
 	color:#35BFFF;
 	text-decoration:none;
@@ -26,14 +30,14 @@ a:hover, a:active{
 }
 
 #loader {
-  width: 160px;
-  height: 24px;
-  background-image:url(../images/loadbar2.gif);
+  width: 32px;
+  height: 32px;
+  background-image:url(../images/wpspin_light-2x.gif);
   position:absolute;
   left: 50%;
   top: 50%;
-  margin-left: -80px;
-  margin-top: -20px;
+  margin-left: -16px;
+  margin-top: -16px;
 }
 
 /* Header */
@@ -56,12 +60,13 @@ a:hover, a:active{
 	margin-bottom: 0px;
 	/*text-shadow:2px 1px 1px #333, 2px 2px 1px #888;*/
 	color:#666;
-	float:left;
+	/*float:left;*/
 	font-size:48px;
 	font-family: 'Rokkitt', serif;
 	letter-spacing:-2px;
 	position: relative;
 	top:5px;
+	display: inline;
 }
 
 .bubble {
@@ -94,16 +99,19 @@ a:hover, a:active{
     /*box-shadow: 2px 2px 0px rgba(34,25,25,0.1);*/
 }
 
-#backlinks{
-	float:right;
+#nav{
+	/*float:right;*/
 	padding:0 20px;
-	line-height:22px;
-	font-weight:bold;
-	font-size:13px;
+	/*line-height:32px;*/
+	position:relative;
+	bottom: -5px;
+	/*font-weight:bold;*/
+	font-size:16px;
+	font-family: 'Oxygen', sans-serif;
+	display: inline;
 }
-#backlinks a{
-	text-align:right;
-	display:block;
+#nav span{
+	padding-left: 10px;
 }
 
 /* Footer */
@@ -133,6 +141,8 @@ a:hover, a:active{
 /* wrapper css */
 #header_wrapper{
 	width:100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #wrapper{
@@ -141,11 +151,13 @@ a:hover, a:active{
 }
 #wrapper hgroup{
 	text-align:center;
+	overflow: hidden;
+
 }
 #wrapper h2{
 	margin:5px 0;
 	color:#FF6D99;
-	text-shadow:1px 1px 2px #A50031;
+	text-shadow:2px 2px 0px rgba(34,25,25,0.1);
 	font-size:33px;
 	font-family: 'Rokkitt', serif;
 }
@@ -157,6 +169,15 @@ a:hover, a:active{
 	color:#888;
 	margin:5px 0;
 }
+#wrapper hgroup img{
+	max-width: 100%;
+	min-width: 600px;
+	overflow: hidden;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
 
 
 #imageList{
@@ -167,13 +188,13 @@ a:hover, a:active{
 }
 
 .grid{
-	width:250px;
-	min-height:100px;
-	padding: 8px;
+	width:220px;
+	/*min-height:100px;*/
+	/*padding: 8px;*/
 	background:#fff;
-	margin:4px;
+	/*margin:8px;*/
 	font-size:12px;
-	float:left;
+	/*float:left;*/
 	box-shadow: 0 2px 0px 1px rgba(34,25,25,0.1);
 	-moz-box-shadow: 0 2px 0px 1px rgba(34,25,25,0.1);
 	-webkit-box-shadow:0 2px 0px 1px rgba(34,25,25,0.1);
@@ -184,7 +205,19 @@ a:hover, a:active{
 	-ms-transition: top 0.5s ease, left 0.5s ease;
 }
 
-.grid .info{}
+.grid .imgholder{
+	padding: 10px;
+	/*width: 100%;*/
+}
+
+.grid .imgholder img{
+	width: 100%;
+}
+
+.grid .info{
+	padding: 8px;
+	background: #f0f0f0;
+}
 
 .grid strong {
 	/*border-bottom:1px solid #ccc;*/
@@ -209,12 +242,12 @@ a:hover, a:active{
 	font-family: 'PT Mono', monospace;
 }
 
-.grid .imgholder img{
+/*.grid .imgholder img{
 	width:100%;
 	background:#ccc;
 	display:block;
 }
-
+*/
 
 
 @media screen and (max-width : 1240px) {
